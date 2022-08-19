@@ -1,0 +1,152 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Fyyur | {{ venue.name }}{% endblock %}
+{% block styles %}individual{% endblock %}
+
+{%block content %}
+<div class="row">
+  <div class="col-sm-7">
+    <h1>{{ venue.name }}</h1>
+    <div class="controls">
+      <p class="subtitle">ID: {{ venue.id }}</p>
+      <div>
+        <a href="/venues/{{ venue.id }}/edit"><i class="fas fa-edit" title="Edit Venue"></i></a>
+        <i
+          class="fas fa-trash-alt"
+          title="Delete Venue"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        ></i>
+
+        <!-- Modal -->
+        <div 
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Confirm Deletion
+                </h5>
+                <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to delete <span>{{ venue.name }}</span> venue?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  Cancel
+                </button>
+                <button
+                  id="delete-venue"
+                  data-id="{{ venue.id }}"
+                  type="button"
+                  class="btn btn-primary"
+                  onclick="deleteVenue()"
+                >Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="genres">
+      {% for genre in venue.genres %}
+      <span class="genre">{{ genre }}</span>
+      {% endfor %}
+    </div>
+    <p class="city-state">
+      <i class="fas fa-globe-americas"></i>
+      {{ venue.city }}, {{ venue.state }}
+    </p>
+    <p>
+      <i class="fas fa-map-marker"></i>
+      {% if venue.address %}{{ venue.address}}
+      {% else %}No Address
+      {% endif %}
+    </p>
+    <p>
+      <i class="fas fa-phone-alt"></i>
+      {% if venue.phone %}{{ venue.phone }}{%else %}No Phone{% endif %}
+    </p>
+    <p>
+      <i class="fas fa-link"></i>
+      {% if venue.website %}<a href="{{ venue.website }}" target="_blank">{{ venue.website }}</a>
+      {% else %}No Website
+      {% endif %}
+    </p>
+    <p>
+      <i class="fab fa-facebook-f"></i>
+      {% if venue.facebook_link %}
+        <a href="{{ venue.facebook_link }}" target="_blank">{{ venue.facebook_link }}</a>
+      {% else %}
+        No Facebook Link
+      {% endif %}
+    </p>
+    {% if venue.seeking_talent %}
+    <div class="seeking">
+      <p class="lead">Currently seeking talent</p>
+      <div class="description">
+        <i class="fas fa-quote-left"></i>
+        <span class="seeking_description">{{ venue.seeking_description }}</span>
+        <i class="fas fa-quote-right"></i>
+      </div>
+    </div>
+    {% else %}
+    <p class="not-seeking">
+      <i class="fas fa-moon"></i>
+      Not currently seeking talent
+    </p>
+    {% endif %}
+  </div>
+  <div class="col-sm-5">
+    <img src="{{ venue.image_link }}" alt="Venue Image" />
+  </div>
+</div>
+<section class="shows">
+  <h2>
+    <span>{{ venue.upcoming_shows_count }}</span> Upcoming
+    {% if venue.upcoming_shows_count == 1 %}Show{% else %}Shows{% endif %}
+  </h2>
+  <div class="row">
+    {%for show in venue.upcoming_shows %}
+    <div class="col-sm-6 col-md-6 col-lg-4">
+      <div class="tile tile-show">
+        <img src="{{ show.artist_image_link }}" alt="Show Artist Image" />
+        <h5>
+          <a href="/artists/{{ show.artist_id }}">{{ show.artist_name }}</a>
+        </h5>
+        <h6>{{ show.start_time }}</h6>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<section class="shows">
+  <h2>
+    <span>{{ venue.past_shows_count }}</span> Past
+    {% if venue.past_shows_count == 1 %}Show{% else %}Shows{% endif %}
+  </h2>
+  <div class="row">
+    {%for show in venue.past_shows %}
+    <div class="col-sm-6 col-md-6 col-lg-4">
+      <div class="tile tile-show">
+        <img src="{{ show.artist_image_link }}" alt="Show Artist Image" />
+        <h5>
+          <a href="/artists/{{ show.artist_id }}">{{ show.artist_name }}</a>
+        </h5>
+        <h6>{{ show.start_time }}</h6>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

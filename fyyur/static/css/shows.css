@@ -1,0 +1,51 @@
+.shows {
+  margin: 20px -15px 30px;
+}
+
+.tile-show {
+  transition: all 0.4s ease-out;
+  border-radius: 50px;
+  border-color: #333;
+}
+
+.tile-show:hover {
+  transition: all 0.4s ease-in;
+  border-color: #ff8c3a;
+}
+
+.tile-show img {
+  transition: all 0.4s ease-out;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+
+.tile-show:hover img {
+  transition: all 0.3s ease-in;
+  transform: scale(1.05);
+  border-radius: 30px;
+}
+
+.tile-show h4 {
+  color: #ddd;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.tile-show h5 {
+  width: max-content;
+  padding: 5px 15px;
+  margin: 5px auto;
+}
+
+.tile-show h5 a:hover {
+  transition: all 0.3s ease-in;
+  text-decoration: none;
+  background: -webkit-linear-gradient(0deg, #ff8c3a, #ddd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  color: #ddd;
+}

@@ -1,0 +1,77 @@
+#content {
+  position: relative;
+  top: 20px;
+}
+
+@media (max-width: 991px) {
+  #content {
+    top: 50px;
+  }
+
+  .container {
+    margin: 0 30px;
+  }
+}
+
+#content h3 {
+  color: #ff8c3a;
+  font-size: 3rem;
+  font-weight: 700;
+  font-style: italic;
+  margin: 30px 0;
+}
+
+.items li {
+  width: max-content;
+}
+
+.items a {
+  padding: 2px 15px 2px 0;
+}
+
+.items a i,
+.items a .item h5 {
+  color: purple;
+  font-size: 1.5rem;
+}
+
+.items li:hover i,
+.items li:hover .item h5 {
+  color: #fff;
+}
+
+.items li:hover i.fa-music {
+  animation: pendulum 0.8s infinite ease-in-out;
+}
+
+@keyframes pendulum {
+  0% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+.items a:hover i.fa-users {
+  animation: rotate 1s 1 ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(200deg);
+  }
+
+  50% {
+    transform: rotateY(-10deg);
+  }
+
+  100% {
+    transform: rotateY(0deg);
+  }
+}

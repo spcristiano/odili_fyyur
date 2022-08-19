@@ -1,0 +1,85 @@
+h1 {
+  font-size: 4.7rem;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 991px) {
+  h1 {
+    font-size: 4rem;
+    font-size: 4rem;
+    font-weight: bold;
+    color: rgba(142, 24, 253, 0.998);
+  }
+
+  .container {
+    margin: 0 30px;
+  }
+}
+
+p.lead {
+  margin: 40px 0 25px;
+}
+
+h3 a button.btn {
+  line-height: 1.6;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  width: 140px;
+}
+
+@media (max-width: 400px) {
+  .container {
+    margin: 0 10px;
+  }
+
+  h3 a button.btn {
+    font-size: 17px;
+    width: 130px;
+  }
+}
+
+h3 a:first-of-type button.btn {
+  border: 3px solid ;
+
+  background: #ff8c3a;
+  color: #fff;
+}
+
+h3 a:last-of-type button.btn {
+  border: 3px solid;
+
+  background: rgba(142, 24, 253, 0.998);
+  color: white;
+}
+
+h3 a:first-of-type button.btn:hover {
+  transition: all 0.3s ease-in;
+  border: 3px solid #ff8c3a;
+  color: #ff8c3a;
+  background: #fff;
+}
+
+h3 a:last-of-type button.btn:hover {
+  transition: all 0.3s ease-in;
+  border: 3px solid  rgba(142, 24, 253, 0.998);
+  background: #fff;
+  color: rgba(142, 24, 253, 0.998);
+}
+
+#front-splash {
+  transition: all 0.3s ease-out;
+  position: relative;
+  top: 70px;
+  right: 15px;
+  filter: sepia(50%) brightness(60%);
+  border-radius: 10px 30px;
+}
+
+#front-splash:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.2);
+  right: 30px;
+  filter: sepia(50%) brightness(80%);
+}
